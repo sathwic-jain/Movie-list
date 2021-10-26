@@ -1,38 +1,83 @@
-.App {
+body{
+  background-image:url("movie.jpg");
+}
+.outerbox{
+  display:flex;
+  justify-content:space-evenly;
+  flex-wrap:wrap;
+  
+}
+.box{
+margin:auto;
+padding:15px;
+}
+.icon{
+ background-color: black;
+ color:yellow;
+}
+
+
+.heading{
+  text-align:center;
+  font-family: Dancing script;
+}
+.heading1{
   text-align: center;
+  background-color: white;
+  font-family: Dancing script;
+  font-size: 60px;
+}
+.heading3{
+  background-color: white;
+  border-radius: 20px;
+  width: fit-content;
+  box-shadow: 5px 5px 3px white;
+}
+p{
+  text-align:left;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.eachcard{
+background-color: white;
+padding:15px;
+width:500px;
+height:auto;
+box-shadow: 5px 5px 20px;
+margin:10px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.eachcard:hover{
+  transition: 0.4s ease-in-out;
+  box-shadow: 12px 12px 20px rgb(236, 210, 210);
+  
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
+.image{
+width: 60%;
+height:auto;
+box-shadow: 5px 5px 20px;
+}
+
+.rating{
+  text-align:center;
+}
+
+.toAdd{
+  display:flex;
   flex-direction: column;
+  justify-content: space-between;
+  flex-wrap:row;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  background-color: black;
+}
+input{
+  width:500px;
+  margin:10px;
+}
+.addbutton{
+  margin-bottom: 20px;;
 }
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.summaryadd{
+  height:100px;
 }
