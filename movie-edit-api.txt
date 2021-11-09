@@ -1,0 +1,65 @@
+import {  useParams } from 'react-router';
+import { useHistory } from 'react-router';
+import { useState,useEffect } from 'react';
+import Button from '@mui/material/Button';
+import ArrowBackRoundedIcon from '@mui/icons-material/ArrowBackRounded';
+
+export function Edit({ movie, setmovie }) {
+  const history=useHistory();
+  const { id } = useParams();
+  // const movies = movie[id];
+
+  const [movies,setm]=useState({});
+  const getmovies=()=>{fetch("https://6188a797d0821900178d7442.mockapi.io/movies",{method:"GET"})
+  .then((data) => data.json())
+  .then((mvs) => setmovie(mvs))};
+  useEffect(getmovies,[]);
+
+  const getsp=()=>{fetch("https://6188a797d0821900178d7442.mockapi.io/movies/"+id,{method:"GET"})
+  .then((data) => data.json())
+  .then((mvs) => setm(mvs))};
+  useEffect(getsp,[]);
+
+  var editmovie=movie;
+  console.log(movies);
+  const [Aname, setname] = useState(movies.name);
+  const [Aimage, setimage] = useState(`${movies.image}`);
+  const [Asummary, setsummary] = useState(`${movies.summary}`);
+  const [Arating, setrating] = useState(`${movies.rating}`);
+
+  
+
+  return (
+    <div className="toAdd">
+      <h2 class="heading3"> Edit {movies.name} movie </h2>
+      <input type="text" placeholder="Name of the movie" value={Aname}
+        onChange={(event) => setname(event.target.value)}></input>
+      <input type="text" placeholder="Image Link" value={Aimage}
+        onChange={(event) => setimage(event.target.value)}></input>
+      <input type="text" placeholder="Summary" className="summaryadd" value={Asummary}
+        onChange={(event) => setsummary(event.target.value)}></input>
+      <input type="text" placeholder="IMDB Rating" value={Arating}
+        onChange={(event) => setrating(event.target.value)}></input>
+      <button className="addbutton" variant="contained"
+        onClick={() => {
+          //   editmovie=movie.filter((element)=>element!==movies);
+          //   setmovie(editmovie);
+          // setmovie([...editmovie, { name: `${Aname}`, image: `${Aimage}`, summary: `${Asummary}`, rating: `${Arating}` }]);
+          let movieupdate={name:Aname,image:Aimage,summary:Asummary,rating:Arating};
+          fetch("https://6188a797d0821900178d7442.mockapi.io/movies", {
+              method: "PUT",
+              body:JSON.stringify(movieupdate),
+              headers:{"Content-Type":"APPLICATION/JSON"}
+            }).then(()=>{getmovies();
+              history.push("/Movies");
+            });
+          // setmovie(editmovie);
+          setname("");
+          setrating("");
+          setsummary("");
+          setimage("");
+        }}>edit movie</button>
+  <Button onClick={()=>history.goBack()}><ArrowBackRoundedIcon/></Button>
+    </div>
+  );
+}
