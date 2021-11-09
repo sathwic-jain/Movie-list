@@ -46,7 +46,7 @@ export function Edit({ movie, setmovie }) {
           //   setmovie(editmovie);
           // setmovie([...editmovie, { name: `${Aname}`, image: `${Aimage}`, summary: `${Asummary}`, rating: `${Arating}` }]);
           let movieupdate={name:Aname,image:Aimage,summary:Asummary,rating:Arating};
-          fetch("https://6188a797d0821900178d7442.mockapi.io/movies", {
+          fetch("https://6188a797d0821900178d7442.mockapi.io/movies/"+movies.id, {
               method: "PUT",
               body:JSON.stringify(movieupdate),
               headers:{"Content-Type":"APPLICATION/JSON"}
