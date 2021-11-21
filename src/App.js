@@ -1,66 +1,175 @@
-import logo from './logo.svg';
+import Button from '@mui/material/Button';
 import './App.css';
 import { useState } from 'react';
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import { grey, purple } from '@mui/material/colors';
+import MenuIcon from '@mui/icons-material/Menu';
+import DeleteIcon from '@mui/icons-material/Delete';
 
-import Button from '@mui/material/Button';
+
+
 
 function App() {
+  const [cart,setCart]=useState([]);
+  const [cartitems,setcartitems]=useState(0);
+  const [state,setstate]=useState(true);
+  const styles={display:state?"block":"none"};
   
- const movies=[{name:"Braveheart",image:"https://www.cinemasterpieces.com/bravnmmnov07.jpg",summary:"William Wallace is a Scottish rebel who leads an uprising against the cruel English ruler Edward the Longshanks, who wishes to inherit the crown of Scotland for himself. When he was a young boy, William Wallace's father and brother, along with many others, lost their lives trying to free Scotland. Once he loses another of his loved ones, William Wallace begins his long quest to make Scotland free once and for all, along with the assistance of Robert the Bruce",rating:"8.3/10"},
- {name:"Gladiator",image:"https://www.themoviedb.org/t/p/original/ehGpN04mLJIrSnxcZBMvHeG0eDc.jpg",summary:"William Wallace is a Scottish rebel who leads an uprising against the cruel English ruler Edward the Longshanks, who wishes to inherit the crown of Scotland for himself. When he was a young boy, William Wallace's father and brother, along with many others, lost their lives trying to free Scotland. Once he loses another of his loved ones, William Wallace begins his long quest to make Scotland free once and for all, along with the assistance of Robert the Bruce",rating:"8.3/10"},
- {name:"Kimi No Na Wa",image:"https://media-cache.cinematerial.com/p/500x/arfwfem8/kimi-no-na-wa-chinese-movie-poster.jpg",summary:"Mitsuha is the daughter of the mayor of a small mountain town. She's a straightforward high school girl who lives with her sister and her grandmother and has no qualms about letting it be known that she's uninterested in Shinto rituals or helping her father's electoral campaign. Instead she dreams of leaving the boring town and trying her luck in Tokyo. Taki is a high school boy in Tokyo who works part-time in an Italian restaurant and aspires to become an architect or an artist. Every night he has a strange dream where he becomes...a high school girl in a small mountain town",rating:"8.4/10"}]
- const [Aname,setname]=useState(""); 
- const [Aimage,setimage]=useState(""); 
- const [Asummary,setsummary]=useState(""); 
- const [Arating,setrating]=useState(""); 
- const [movie,setmovie]=useState(movies);
-
- return (
-    <div className="main">
-      <h1 className="heading1">Top Movies</h1>
-       <div className="outerbox">
-         
-         {movie.map((elements)=>
-          <Movies name={elements.name}
-              image={elements.image}
-              summary={elements.summary}
-              rating={elements.rating}
-              />
-      )}
-    </div>
-       <div className="toAdd">
-         <h2 class="heading3"> Add your own movie </h2>
-              <input type="text" placeholder="Name of the movie" 
-              onChange={(event)=>setname(event.target.value)}></input>
-              <input type="text" placeholder="Image Link" 
-               onChange={(event)=>setimage(event.target.value)}></input>
-              <input type="text" placeholder="Summary" className="summaryadd"
-               onChange={(event)=>setsummary(event.target.value)}></input>
-              <input type="text" placeholder="IMDB Rating" 
-               onChange={(event)=>setrating(event.target.value)}></input>
-              <Button className="addbutton" variant="contained"
-              onClick={()=>{
-                if(`${Aname}`=="" || `${Aimage}`=="" || `${Asummary}`=="" || `${Arating}`=="")alert("Enter the values as required")
-                else setmovie([...movie,{name:`${Aname}`,image:`${Aimage}`,summary:`${Asummary}`,rating:`${Arating}`}])}}>Add movie</Button>
-                
-                </div> 
-         
-    </div>
-  );
-}
-
-function Movies({name,image,summary,rating}){
-  const [show,setShow]=useState(true);
+  
+    const products=[{image:"https://dummyimage.com/450x300/dee2e6/6c757d.jpg",name:"Fancy product",stars:"0",price:"$40.00-80.00"},{image:"https://dummyimage.com/450x300/dee2e6/6c757d.jpg",name:"Special item",stars:"5",price:"$18.00"},
+    {image:"https://dummyimage.com/450x300/dee2e6/6c757d.jpg",name:"Sale item",stars:"0",price:"$25.00"},{image:"https://dummyimage.com/450x300/dee2e6/6c757d.jpg",name:"Popular item",stars:"5",price:"$40.00"},{image:"https://dummyimage.com/450x300/dee2e6/6c757d.jpg",name:"Sale item",stars:"0",price:"$25.00"},
+    {image:"https://dummyimage.com/450x300/dee2e6/6c757d.jpg",name:"Fancy Product",stars:"0",price:"$120.00 - $280.00"},{image:"https://dummyimage.com/450x300/dee2e6/6c757d.jpg",name:"Special item",stars:"5",price:"$18.00"},{image:"https://dummyimage.com/450x300/dee2e6/6c757d.jpg",name:"Popular item",stars:"5",price:"$40.00"}]
   return(
-    <div className="eachcard">
-    <h1 className="heading">{name}</h1>
-    <img className="image" src={image}/>
-    <p>{show?summary:""}</p>
-    <Button variant="contained" onClick={()=>setShow(!show)}>{show?"Hide description":"Show description"}</Button>
-    <p className="rating"><i className="fa fa-imdb fa-2x icon" ></i>{rating}</p>
+    <div >
+      
+      <div className="lists">
+      <div className="mainlist">
+      <ul >
+        <li>
+          <Link to="/"><Button>Home</Button></Link>
+          </li>
+        <li><Button>About</Button></li>
+        <li><Button>Shop</Button></li>
+        </ul>
+        </div>
+        <div className="cartlist">
+        <ul >
+        <li>
+          <Link to="/Cart"><Button variant="contained" className="cart" sx={{color:grey[900]}} ><ShoppingCartIcon/>Cart  {cartitems}</Button></Link>
+        </li>
+      </ul>
     </div>
-  );
+    </div>
+    
+    <div className="lists2">
+      
+      <div className="home">
+      <ul >
+        <li>
+          <Link to="/"><Button>Home</Button></Link>
+          </li>
+        </ul>
+      </div>
+      <div className="dropdown">
+        <div className="menu">
+          <ul><li>
+          <Button onClick={()=>setstate(!state)}><MenuIcon/></Button>
+          </li></ul>
+          </div>
+    </div> 
+    </div>
+    <div className="hide">
+    <div className="dropdownLists" 
+    style={styles}>
+    <ul className="drop">
+    
+        <li><Button >About</Button></li>
+        <li><Button>Shop</Button></li>
+        <li>
+          <Link to="/Cart"><Button className="cart" sx={{color:grey[900]}} variant="outlined"><ShoppingCartIcon/>Cart  {cartitems}</Button></Link>
+        </li>
+      </ul>
+      </div>
+    </div>
+   
+   
+
+      <Switch>
+        <Route exact path="/Cart">
+          <Cart cart={cart} setCart={setCart} setcartitems={setcartitems}/>
+        </Route>
+        <Route exact path="/">
+        <Homepage products={products} cart={cart} setCart={setCart} setcartitems={setcartitems}/>
+        </Route>
+      </Switch>
+    </div>
+  
+  )
 }
 
+function Homepage({products,cart,setCart,cartcopy,setcartitems}){
+  var cartcopy=[...cart];
+  return(
+    <div>
+      <div className="topBody container-fluid mb-5">
+       <div className=" mb-5 p-5">
+         <div className="p-5">
+        <h1 className="heading">Shop in Style</h1>
+        <h4 className="subheading">With this webpage template</h4>
+        </div>
+        </div>
+      </div>
 
+    <div className="container-fluid sellbody">
+      <div className="mx-lg-5 mx-md-5 px-lg-5 px-3">
+      <div className="row ">
+      {products.map((elements,index)=>
+      <div className="col-lg-3 col-md-4 col-6 gx-3 my-3">
+        <div className="mx-lg-4 mx-2 my-3">
+        <img className="image" src={elements.image}/>
+        <div className="cardbody">
+        <h5><b>{elements.name}</b></h5>
+        <p>{elements.stars}</p>
+        <p>{elements.price}</p>
+        </div>
+        <div className="buttonclass">
+        <button className="cartbutton" onClick={()=>{
+              cartcopy.push(elements);
+              setCart(cartcopy);
+              setcartitems(cartcopy.length);
+              console.log(cartcopy);
+        }}>Add to cart</button>
+        </div>
+        </div>
+      </div>
+      )}
+      </div>
+    </div>
+    </div>
+
+    </div>
+  )
+}
+
+function Cart({cart,setCart,setcartitems}){
+  var cartCopy=[...cart];
+ 
+  return(
+    
+    <div>
+      <div className="topBody container-fluid mb-5">
+       <div className=" m-4 p-5">
+        <h1 className="heading">Cart</h1>
+        
+        </div>
+      </div>
+    <div className="container-fluid sellbody">
+      <div className="mx-lg-5 mx-md-5 px-lg-5 px-3">
+      <div className="row ">
+      {cartCopy.map((elements,index)=>
+      <div className="col-lg-3 col-md-4 col-6 gx-3">
+        <div className="mx-lg-4 mx-2 my-3">
+        <img className="image" src={elements.image}/>
+        <div className="cardbody">
+        <h5><b>{elements.name}</b></h5>
+        <p>{elements.stars}</p>
+        <p>{elements.price}</p>
+        </div>
+        <div className="buttonclass">
+        <button className="cartbutton" onClick={()=>{
+              cartCopy=cart.filter((card,idx)=>idx!==index)
+              setCart(cartCopy);
+              setcartitems(cartCopy.length);
+        }}><DeleteIcon/></button>
+        </div>
+        </div>
+      </div>
+      )}
+      </div>
+    </div>
+    </div>
+    </div>
+  )
+}
 export default App;

@@ -1,83 +1,107 @@
-body{
-  background-image:url("movie.jpg");
-}
-.outerbox{
-  display:flex;
-  justify-content:space-evenly;
-  flex-wrap:wrap;
-  
-}
-.box{
-margin:auto;
-padding:15px;
-}
-.icon{
- background-color: black;
- color:yellow;
-}
 
-
-.heading{
-  text-align:center;
-  font-family: Dancing script;
-}
-.heading1{
-  text-align: center;
-  background-color: white;
-  font-family: Dancing script;
-  font-size: 60px;
-}
-.heading3{
-  background-color: white;
-  border-radius: 20px;
-  width: fit-content;
-  box-shadow: 5px 5px 3px white;
-}
-p{
-  text-align:left;
-}
-
-.eachcard{
-background-color: white;
-padding:15px;
-width:500px;
-height:auto;
-box-shadow: 5px 5px 20px;
-margin:10px;
-}
-
-.eachcard:hover{
-  transition: 0.4s ease-in-out;
-  box-shadow: 12px 12px 20px rgb(236, 210, 210);
-  
-}
 
 .image{
-width: 60%;
-height:auto;
-box-shadow: 5px 5px 20px;
+  width:100%;
+  height:auto;
+  object-fit: cover;
 }
 
-.rating{
-  text-align:center;
-}
-
-.toAdd{
+.cardbody{
   display:flex;
   flex-direction: column;
-  justify-content: space-between;
-  flex-wrap:row;
   align-items: center;
-  background-color: black;
-}
-input{
-  width:500px;
-  margin:10px;
-}
-.addbutton{
-  margin-bottom: 20px;;
+  justify-content: center;
+  word-wrap: break-word;
 }
 
-.summaryadd{
-  height:100px;
+.buttonclass{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.cartbutton{
+  border: none;
+  border-radius: 10px;
+}
+
+.topBody{
+  display:flex;
+  justify-content: center;
+  align-items:center;
+  background-color: black;
+  color:white;
+}
+
+.heading{
+  font-weight: 700;
+  font-size:60px;
+}
+
+.subheading{
+  text-align: center;
+  color:grey;
+}
+
+ul{
+  list-style-type: none;
+  margin:10px;
+  display:flex;
+  
+}
+.lists{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  padding:0px 100px;
+}
+
+.lists2{
+  display:flex;
+  justify-content:space-between;
+}
+
+.mainlist{
+  /* display: flex;
+  flex-wrap: wrap;
+  justify-content:start; */
+  /* width:50%; */
+  word-wrap: break-word;
+  /* flex-basis:200px; */
+}
+.cartlist{
+  /* width:50%; */
+  /* display: flex; */
+  /* justify-content: flex-end; */
+  word-wrap: break-word;
+}
+
+.cart{
+  background-color: white;
+  color:black
+}
+.cart:hover{
+  background-color: black;
+  color:rgb(245, 239, 239);
+}
+
+@media screen and ( max-width:1000px) {
+  .lists{
+    display:none;
+  }
+  
+}
+@media screen and ( min-width:1000px) {
+  .lists2{
+    display:none;
+  }
+  .hide{
+    display: none;
+  }
+  
+}
+.drop{
+  display: flex;
+  flex-direction: column;
 }
