@@ -127,7 +127,28 @@ function Homepage({products,cart,setCart,cartcopy,setcartitems}){
       </div>
     </div>
     </div>
-
+       <div className="toAdd">
+         <h2 class="heading3"> Add your own movie </h2>
+              <input type="text" placeholder="Name of the movie" value={Aname}
+              onChange={(event)=>setname(event.target.value)}></input>
+              <input type="text" placeholder="Image Link" value={Aimage}
+               onChange={(event)=>setimage(event.target.value)}></input>
+              <input type="text" placeholder="Summary" className="summaryadd" value={Asummary}
+               onChange={(event)=>setsummary(event.target.value)}></input>
+              <input type="text" placeholder="IMDB Rating" value={Arating}
+               onChange={(event)=>setrating(event.target.value)}></input>
+              <Button className="addbutton" variant="contained"
+             onClick={()=>{
+                if(`${Aname}`=="" || `${Aimage}`=="" || `${Asummary}`=="" || `${Arating}`=="")alert("Enter the values as required")
+                else setmovie([...movie,{name:`${Aname}`,image:`${Aimage}`,summary:`${Asummary}`,rating:`${Arating}`}])
+                setname("");
+                setrating("");
+                setsummary("");
+                setimage("");
+                }}>Add movie</Button>
+                
+                </div> 
+         
     </div>
   )
 }
